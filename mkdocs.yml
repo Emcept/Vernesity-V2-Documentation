@@ -32,6 +32,9 @@ extra:
   social:
     - icon: fontawesome/brands/github 
       link: https://github.com/Emcept
+      
+extra_files:
+  - Scripts/test.lua
 
 markdown_extensions:
   - pymdownx.highlight:
