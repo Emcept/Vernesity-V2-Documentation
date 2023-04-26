@@ -1,5 +1,5 @@
 # Vernesity UI Library
-### Made by Emmy#4846
+Made by Emmy#4846
 
 <br />
 
@@ -14,8 +14,6 @@
  - Easy to use
  - Much, much more
 
-
-<br />
 <br />
 
 ## Getting Loadstring
@@ -52,7 +50,13 @@ local Window = Library:Window(<Title>, <Subtitle>, <Theme (optional)>)
 Window:Notify(<Title>, <Description>, <Arguments Table>, <Duration>, <Func>)
 ```
 ### The arguments in the table should be 0-2 strings or 0-2 numbers (if you want to use images instead of regular buttons)
+
+<br />
+
 Note: Notifications with 2 buttons will always return 'Button1' when the first button is pressed, and 'Button2' when the second button is pressed
+
+<br />
+
 #### For example, this would create a notification with 2 Buttons
 ```Lua
 Window:Notify("Question", "Do you like this UI Library?", {"Yes", "No"}, 5, function(Text)
