@@ -64,7 +64,9 @@ end)
 ```
 #### And this would create a notification with 1 ImageButton (you need to enter a valid ImageID)
 ```Lua
-Window:Notify("Notification", "Description", {1234567}, 10, function() print("Button pressed") end)
+Window:Notify("Notification", "Description", {1234567}, 10, function()
+	print("Button pressed")
+end)
 ```
 #### This would just create a notification with no buttons
 ```Lua
