@@ -264,6 +264,9 @@ end)
 Window:OnMinimize(function(state)
 	print('Minimized:', state)
 end)
+Window:OnThemeChanged(function()
+	print("The theme had been changed.")
+end)
 ```
 
 	
