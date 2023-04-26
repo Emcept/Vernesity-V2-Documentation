@@ -292,10 +292,10 @@ local Toggle = Section:Toggle('Toggle', 'Desc', true, function(state)
 		print('Off')
 	end
 end)
-local Slider = Section:Slider('WalkSpeed', 'Desc', 0, 100, 16, function(speed)
+local Slider = Section:Slider('WalkSpeed Slider', 'Desc', 0, 100, 16, function(speed)
 	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
 end)
-local Keybind = Section:Keybind('Keybind', 'Desc', 'F', function()
+local Keybind = Section:Keybind('Keybind - Toggle UI', 'Desc', 'F', function()
 	Window:ToggleUI()
 end)
 
