@@ -102,7 +102,7 @@ local TextBox = Section:TextBox(<TextBox Name>, <TextBox Description>, <Default 
 ```Lua
 local Paragraph = Section:Paragraph(<Text 1>, <Text 2>)
 ```
-<br />
+
 
 ## Creating Interactables
 ```Lua
@@ -159,7 +159,7 @@ local Keybind = Section:Keybind(<Keybind Name>, <Keybind Description>, <Default 
 
 
 ## Other Functions
-<br /><br />
+
 ### Getting the Window's current theme
 ```Lua
 local theme = Window:GetTheme()
