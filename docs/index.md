@@ -55,7 +55,11 @@ Note: Notifications with 2 buttons will always return 'Button1' when the first b
 #### For example, this would create a notification with 2 Buttons
 ```Lua
 Window:Notify("Question", "Do you like this UI Library?", {"Yes", "No"}, 5, function(Text)
-	if Text == "Yes" then print("Thank you!") else print(":(") end
+	if Text == "Yes" then
+		print("Thank you!")
+	else
+		print(":(")
+	end
 end)
 ```
 #### And this would create a notification with 1 ImageButton (you need to enter a valid ImageID)
@@ -233,10 +237,17 @@ Window:Remove()
 ```Lua
 local theme = Window:GetTheme()
 for i, v in pairs(theme) do
-	settingsSection:ColorPicker(i, "Changes "..i.."'s theme", v, function(color3)
+	local ThemeColorPicker = SettingsSection:ColorPicker(i, "Changes "..i.."'s Theme", v, function(color3)
 		theme = Window:GetTheme()
 		theme[i] = color3
 		Window:ChangeTheme(theme)
+	end)
+	Window:OnThemeChanged(function()
+		theme = Window:GetTheme()
+		ThemeColorPicker:Edit(i, "Changes "..i.."'s Theme", theme[i], function(color3)
+			theme[i] = color3
+			Window:ChangeTheme(theme)
+		end)
 	end)
 end
 ```
