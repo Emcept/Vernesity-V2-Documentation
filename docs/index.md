@@ -1,8 +1,6 @@
 # Vernesity UI Library
 Made by Emmy#4846
 
-<br />
-
 ## Features:
  - Resizable
  - Minimizable
@@ -14,26 +12,23 @@ Made by Emmy#4846
  - Easy to use
  - Much, much more
 
-<br />
 
 ## Getting Loadstring
 ```Lua
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Emcept/Vernesity-V2/main/source.lua"))()
 ```
-<br />
 
 ## Adding Key System
 ```Lua
 Library:EnableKeySystem(<Title>, <Subtitle>, <Note>, <List of keys>)
 ```
 
-<br />
 
 ## Creating a Window
 ```Lua
 local Window = Library:Window(<Title>, <Subtitle>, <Theme (optional)>)
 ```
-<br />
+
 
 ### Themes:
 > DarkTheme  
@@ -43,7 +38,7 @@ local Window = Library:Window(<Title>, <Subtitle>, <Theme (optional)>)
 > PurpleTheme  
 > RedTheme   
 
-<br />
+
 
 ## Creating Notifications
 ```Lua
@@ -51,11 +46,11 @@ Window:Notify(<Title>, <Description>, <Arguments Table>, <Duration>, <Func>)
 ```
 ### The arguments in the table should be 0-2 strings or 0-2 numbers (if you want to use images instead of regular buttons)
 
-<br />
+
 
 Note: Notifications with 2 buttons will always return 'Button1' when the first button is pressed, and 'Button2' when the second button is pressed
 
-<br />
+
 
 #### For example, this would create a notification with 2 Buttons
 ```Lua
@@ -71,37 +66,37 @@ Window:Notify("Notification", "Description", {1234567}, 10, function() print("Bu
 ```Lua
 Window:Notify("Notification", "Description", {}, 3)
 ```
-<br />
+
 
 ## Creating Tabs
 ```Lua
 local Tab = Window:Tab(<Tab Name>, <ImageID (optional)>)
 ```
-<br />
+
 
 ## Creating Sections
 ```Lua
 local Section = Tab:Section(<Section Name>)
 ```
-<br />
+
 
 ## Creating Buttons
 ```Lua
 local Button = Section:Button(<Button Name>, <Button Description>, <Function>)
 ```
-<br />
+
 
 ## Creating Labels
 ```Lua
 local Label = Section:Label(<Label Name>)
 ```
-<br />
+
 
 ## Creating TextBoxes
 ```Lua
 local TextBox = Section:TextBox(<TextBox Name>, <TextBox Description>, <Default Text>, <Function>)
 ```
-<br />
+
 
 ## Creating Paragraphs
 ```Lua
@@ -113,7 +108,7 @@ local Paragraph = Section:Paragraph(<Text 1>, <Text 2>)
 ```Lua
 local Interactable = Section:Interactable(<Interactable Name>, <Interactable Description>, <Button Text>, <Function>)
 ```
-<br />
+
 
 ## Creating Dropdowns
 ```Lua
@@ -128,37 +123,39 @@ local DropdownButton = Dropdown:Button(<Button Name>)
 ```Lua
 local Switch = Section:Switch(<Switch Name>, <Switch Description>, <Enabled (true/false)>, <Function>)
 ```
-<br />
+
 
 ## Creating Toggles
 ```Lua
 local Toggle = Section:Toggle(<Toggle Name>, <Toggle Description>, <Enabled (true/false)>, <Function>)
 ```
-<br />
+
 
 ## Creating Sliders
 ```Lua
 local Slider = Section:Slider(<Slider Name>, <Slider Description>, <Minimum Value>, <Maximum Value>, <Default Value>, <Function>)
 ```
-<br />
+
 
 ## Creating ColorPickers
 ```Lua
 local ColorPicker = Section:ColorPicker(<ColorPicker Name>, <ColorPicker Description>, <Default Color>, <Function>)
 ```
-<br />
+
 
 ## Creating PlayerLists
 ```Lua
 local PlayerList = Section:PlayerList(<PlayerList Name>, <Function>)
 ```
-<br />
+
 
 ## Creating Keybinds
 ```Lua
 local Keybind = Section:Keybind(<Keybind Name>, <Keybind Description>, <Default Keybind>, <Function>)
 ```
-<br /><br /><br />
+
+
+
 
 
 ## Other Functions
@@ -167,7 +164,7 @@ local Keybind = Section:Keybind(<Keybind Name>, <Keybind Description>, <Default 
 ```Lua
 local theme = Window:GetTheme()
 ```
-<br />
+
 
 ### Adding themes
 #### There are 2 ways to add themes:
@@ -181,8 +178,6 @@ local Window = Library:Window("Title", "Subtitle", {
 })
 ```
 #### or
-<br />
-
 ```Lua
 Library:AddTheme("GreenTheme", {{
 	TextColor = Color3.fromRGB(240, 240, 240),
@@ -202,7 +197,6 @@ Window:ChangeTheme(<theme>)
 ```Lua
 Window:Edit("Title", "Subtitle", <theme>)
 ```
-<br />
 
 
 ## Toggling the UI:
@@ -219,7 +213,8 @@ Window:ToggleUI()
 local Window = Library:Window("Title", "Subtitle", "DarkTheme")
 Window:Edit("New Title", "New Subtitle", "PurpleTheme")
 ```
-<br /><br />
+
+
 
 ## Removing UI Elements:
 ```Lua
@@ -230,7 +225,9 @@ Window:Edit("New Title", "New Subtitle", "PurpleTheme")
 local Window = Library:Window("Title", "Subtitle", "DarkTheme")
 Window:Remove()
 ```
-<br /><br />
+
+
+
 
 ### And here's the code which will help you add a fully customizable UI
 ```Lua
@@ -243,7 +240,8 @@ for i, v in pairs(theme) do
 	end)
 end
 ```
-<br />
+
+
 
 ### Other Useless Functions: :OnClose(<Function>), :OnMinimize(<Function>) and :OnThemeChanged(<Function>)
 ```Lua
@@ -254,8 +252,10 @@ Window:OnMinimize(function(state)
 	print('Minimized:', state)
 end)
 ```
-<br /><br /><br />	
 
+	
+	
+	
 ## EXAMPLE CODE:
 ```Lua
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Emcept/Vernesity-V2/main/source.lua"))()
