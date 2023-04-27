@@ -256,7 +256,7 @@ end
 
 
 
-### Other Useless Functions: :OnClose(<Function>), :OnMinimize(<Function>) and :OnThemeChanged(<Function>)
+### Other Useless Functions: :OnClose(<Function>), :OnMinimize(<Function>), :OnThemeChanged(<Function>) and <Element>:GetElement()
 ```Lua
 Window:OnClose(function()
 	print('Closed')
@@ -267,6 +267,7 @@ end)
 Window:OnThemeChanged(function()
 	print("The theme had been changed.")
 end)
+print(Window:GetElement().Name)
 ```
 
 	
