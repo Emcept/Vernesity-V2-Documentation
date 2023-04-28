@@ -102,7 +102,10 @@ local Label = Section:Label(<Label Name>)
 ```Lua
 local TextBox = Section:TextBox(<TextBox Name>, <TextBox Description>, <Default Text>, <Function>)
 ```
-
+### Getting the TextBox's current text
+```Lua
+print(TextBox:GetText())
+```
 
 ## Creating Paragraphs
 ```Lua
@@ -129,19 +132,28 @@ local DropdownButton = Dropdown:Button(<Button Name>)
 ```Lua
 local Switch = Section:Switch(<Switch Name>, <Switch Description>, <Enabled (true/false)>, <Function>)
 ```
-
+### Checking if a switch is toggled (returns true if it's turned on)
+```Lua
+print(tostring(Switch:IsToggled()))
+```
 
 ## Creating Toggles
 ```Lua
 local Toggle = Section:Toggle(<Toggle Name>, <Toggle Description>, <Enabled (true/false)>, <Function>)
 ```
-
+### Checking if a toggled is toggled (returns true if it's turned on)
+```Lua
+print(tostring(Toggle:IsToggled()))
+```
 
 ## Creating Sliders
 ```Lua
 local Slider = Section:Slider(<Slider Name>, <Slider Description>, <Minimum Value>, <Maximum Value>, <Default Value>, <Function>)
 ```
-
+### Getting a slider's current value
+```Lua
+print(Slider:GetValue())
+```
 
 ## Creating ColorPickers
 ```Lua
