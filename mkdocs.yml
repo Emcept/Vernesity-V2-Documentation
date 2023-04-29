@@ -18,8 +18,8 @@ theme:
       toggle:
         icon: material/weather-night
         name: Switch to light mode
-      primary: deep purple
-      accent: blue
+      primary: teal
+      accent: deep purple
     - scheme: default
       toggle:
         icon: material/brightness-7
