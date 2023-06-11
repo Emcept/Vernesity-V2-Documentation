@@ -18,14 +18,12 @@ theme:
       toggle:
         icon: material/weather-night
         name: Switch to light mode
-      primary: teal
-      accent: deep purple
+      primary: deep purple
+      accent: blue
     - scheme: default
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-      primary: deep purple
-      accent: deep purple
 
 extra:
   generator: false
