@@ -1,6 +1,8 @@
 # Vernesity UI Library
 ## Made by Emmy (Discord: emcept)
 
+## Latest update: Added Command Bar
+
 ## Features:
  - Resizable
  - Minimizable
@@ -20,13 +22,13 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Emcep
 
 ## Adding Key System
 ```Lua
-Library:EnableKeySystem(<Title>, <Subtitle>, <Note>, <List of keys>)
+Library:EnableKeySystem(<Title (string)>, <Subtitle (string)>, <Note (string)>, <List of keys (table)>)
 ```
 
 
 ## Creating a Window
 ```Lua
-local Window = Library:Window(<Title>, <Subtitle>, <Theme (optional)>)
+local Window = Library:Window(<Title (string)>, <Subtitle (string)>, <Theme (optional)  (string/table)>)
 ```
 
 
@@ -42,13 +44,13 @@ local Window = Library:Window(<Title>, <Subtitle>, <Theme (optional)>)
 
 ## Creating Notifications
 ```Lua
-Window:Notify(<Title>, <Description>, <Arguments Table>, <Duration>, <Func>)
+Window:Notify(<Title (string)>, <Description (string)>, <Arguments (table)>, <Duration (number)>, <Callback (function)>)
 ```
-### The arguments in the table should be 0-2 strings or 0-2 numbers (if you want to use images instead of regular buttons)
+### The values in the table should be 0-2 strings or 0-2 numbers (if you want to use images instead of regular buttons)
 
 
 
-Note: Notifications with 2 buttons will always return 'Button1' when the first button is pressed, and 'Button2' when the second button is pressed
+Notifications with 2 image buttons will always return 'Button1' when the first button is pressed, and 'Button2' when the second button is pressed
 
 
 
@@ -76,31 +78,31 @@ Window:Notify("Notification", "Description", {}, 3)
 
 ## Creating Tabs
 ```Lua
-local Tab = Window:Tab(<Tab Name>, <ImageID (optional)>)
+local Tab = Window:Tab(<Tab Name (string)>, <ImageID (optional) (number)>)
 ```
 
 
 ## Creating Sections
 ```Lua
-local Section = Tab:Section(<Section Name>)
+local Section = Tab:Section(<Section Name (string)>)
 ```
 
 
 ## Creating Buttons
 ```Lua
-local Button = Section:Button(<Button Name>, <Button Description>, <Function>)
+local Button = Section:Button(<Button Name (string)>, <Button Description (string)>, <Function (function)>)
 ```
 
 
 ## Creating Labels
 ```Lua
-local Label = Section:Label(<Label Name>)
+local Label = Section:Label(<Label Name (string)>)
 ```
 
 
 ## Creating TextBoxes
 ```Lua
-local TextBox = Section:TextBox(<TextBox Name>, <TextBox Description>, <Default Text>, <Function>)
+local TextBox = Section:TextBox(<TextBox Name (string)>, <TextBox Description (string)>, <Default Text (string)>, <Function (function)>)
 ```
 ### Getting the TextBox's current text
 ```Lua
@@ -109,28 +111,28 @@ print(TextBox:GetText())
 
 ## Creating Paragraphs
 ```Lua
-local Paragraph = Section:Paragraph(<Text 1>, <Text 2>)
+local Paragraph = Section:Paragraph(<Text 1 (string)>, <Text 2 (string)>)
 ```
 
 
 ## Creating Interactables
 ```Lua
-local Interactable = Section:Interactable(<Interactable Name>, <Interactable Description>, <Button Text>, <Function>)
+local Interactable = Section:Interactable(<Interactable Name (string)>, <Interactable Description (string)>, <Button Text (string)>, <Function (function)>)
 ```
 
 
 ## Creating Dropdowns
 ```Lua
-local Dropdown = Section:Dropdown(<Dropdown Name>, <Dropdown List>, <Default Option>, <Function>)
+local Dropdown = Section:Dropdown(<Dropdown Name (string)>, <Dropdown List (table)>, <Default Option (string)>, <Function (function)>)
 ```
 ### Adding a button inside of a Dropdown
 ```Lua
-local DropdownButton = Dropdown:Button(<Button Name>)
+local DropdownButton = Dropdown:Button(<Button Name (string)>)
 ```
 
 ## Creating Switches
 ```Lua
-local Switch = Section:Switch(<Switch Name>, <Switch Description>, <Enabled (true/false)>, <Function>)
+local Switch = Section:Switch(<Switch Name (string)>, <Switch Description (string)>, <Enabled (true/false)>, <Function (function)>)
 ```
 ### Checking if a switch is toggled (returns true if it's turned on)
 ```Lua
@@ -139,7 +141,7 @@ print(tostring(Switch:IsToggled()))
 
 ## Creating Toggles
 ```Lua
-local Toggle = Section:Toggle(<Toggle Name>, <Toggle Description>, <Enabled (true/false)>, <Function>)
+local Toggle = Section:Toggle(<Toggle Name (string)>, <Toggle Description (string)>, <Enabled (true/false)>, <Function (function)>)
 ```
 ### Checking if a toggled is toggled (returns true if it's turned on)
 ```Lua
@@ -148,7 +150,7 @@ print(tostring(Toggle:IsToggled()))
 
 ## Creating Sliders
 ```Lua
-local Slider = Section:Slider(<Slider Name>, <Slider Description>, <Minimum Value>, <Maximum Value>, <Default Value>, <Function>)
+local Slider = Section:Slider(<Slider Name (string)>, <Slider Description (string)>, <Minimum Value (number)>, <Maximum Value (number)>, <Default Value (number)>, <Function (function)>)
 ```
 ### Getting a slider's current value
 ```Lua
@@ -157,21 +159,42 @@ print(Slider:GetValue())
 
 ## Creating ColorPickers
 ```Lua
-local ColorPicker = Section:ColorPicker(<ColorPicker Name>, <ColorPicker Description>, <Default Color>, <Function>)
+local ColorPicker = Section:ColorPicker(<ColorPicker Name (string)>, <ColorPicker Description (string)>, <Default Color (Color3)>, <Function (function)>)
 ```
 
 
 ## Creating PlayerLists
 ```Lua
-local PlayerList = Section:PlayerList(<PlayerList Name>, <Function>)
+local PlayerList = Section:PlayerList(<PlayerList Name (string)>, <Function (function)>)
 ```
 
 
 ## Creating Keybinds
 ```Lua
-local Keybind = Section:Keybind(<Keybind Name>, <Keybind Description>, <Default Keybind>, <Function>)
+local Keybind = Section:Keybind(<Keybind Name (string)>, <Keybind Description (string)>, <Default Keybind (string)>, <Function (function)>)
 ```
 
+
+## Adding CommandBar
+```Lua
+local CommandBar = Window:CommandBar(<CommandBar Name (string)>, <Default Prefix (string)>)
+```
+### Getting all commands
+```Lua
+local Commands = CommandBar:GetCommands()
+```
+### Getting the current prefix
+```Lua
+local Prefix = CommandBar:GetPrefix()
+```
+### Changing the prefix
+```Lua
+CommandBar:ChangePrefix("-")
+```
+### Adding commands
+```Lua
+local Command1 = CommandBar:AddCommand(<Names (table)>, <Arguments (table)>, <Description (string)>, <Function (function)>)
+```
 
 
 
@@ -181,6 +204,14 @@ local Keybind = Section:Keybind(<Keybind Name>, <Keybind Description>, <Default 
 ### Getting the Window's current theme
 ```Lua
 local theme = Window:GetTheme()
+```
+
+### Minimizing/Unminimizing a Window/CommandBar
+```Lua
+Window:Minimize()
+Window:Unminimize()
+CommandBar:Minimize()
+CommandBar:Unminimize()
 ```
 
 
@@ -209,20 +240,21 @@ local Window = Library:Window("Title", "Subtitle", "GreenTheme")
 
 ### If you want to change the theme, there are also 2 ways to do it:
 ```Lua
-Window:ChangeTheme(<theme>)
+Window:ChangeTheme(<Theme (string/table)>)
 ```
 #### or
 ```Lua
-Window:Edit("Title", "Subtitle", <theme>)
+Window:Edit("Title", "Subtitle", <Theme (string/table)>)
 ```
 
 
-## Toggling the UI:
+## Toggling the Window/CommandBar UI:
 ```Lua
 Window:ToggleUI()
+CommandBar:ToggleUI()
 ```
 
-## Editing UI Elements:
+## Editing UI Elements: (you can edit any UI element, except for notifications)
 ```Lua
 <Element>:Edit(<New Arguments>)
 ```
@@ -271,10 +303,16 @@ end
 ### Other Useless Functions: :OnClose(<Function>), :OnMinimize(<Function>), :OnThemeChanged(<Function>) and <Element>:GetElement()
 ```Lua
 Window:OnClose(function()
-	print('Closed')
+	print('Window closed')
 end)
 Window:OnMinimize(function(state)
-	print('Minimized:', state)
+	print('Window minimized:', state)
+end)
+CommandBar:OnClose(function()
+	print('CommandBar closed')
+end)
+CommandBar:OnMinimize(function(state)
+	print('CommandBar minimized:', state)
 end)
 Window:OnThemeChanged(function()
 	print("The theme had been changed.")
@@ -365,5 +403,17 @@ Window:OnThemeChanged(function()
 end)
 local PlayerList = Section:PlayerList('PlayerList', function(plr)
 	print("Selected player:", plr)
+end)
+
+local CommandBarUI = Window:CommandBar('Name here', ';')
+CommandBarUI:AddCommand({'print'}, {'string'}, 'Prints a string.', function(str)
+	print(str)
+end)
+CommandBarUI:AddCommand({'addnumbers'}, {'numbers'}, 'Adds numbers together.', function(numbers)
+	local totalSum = 0
+	for number in numbers:gmatch("%d+") do
+		totalSum = totalSum + tonumber(number)
+	end
+	print(totalSum)
 end)
 ```
