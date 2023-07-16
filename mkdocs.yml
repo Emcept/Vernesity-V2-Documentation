@@ -29,6 +29,7 @@ theme:
 
 extra:
   generator: false
+  google-site-verification: '<meta name="google-site-verification" content="9Sp3b3314JMDBoXwVy5d37oiIA-dpIgmiOfG8DsasLo" />'
   social:
     - icon: fontawesome/brands/github 
       link: https://github.com/Emcept
