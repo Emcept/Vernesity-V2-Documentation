@@ -1,10 +1,10 @@
-# Vernesity UI Library
+# Vernesity V2 UI Library
 ## Made by Emmy (Discord: emcept)
 
-## Latest update: Added Command Bar
+## Latest update: Added <Element>:ConvertToCommand() and fixed a lot of bugs
 
 ## Features:
- - Resizable
+ - Resizable windows
  - Minimizable
  - Many elements
  - Key system (don't expect it to be super secure though)
@@ -28,7 +28,7 @@ Library:EnableKeySystem(<Title (string)>, <Subtitle (string)>, <Note (string)>, 
 
 ## Creating a Window
 ```Lua
-local Window = Library:Window(<Title (string)>, <Subtitle (string)>, <Theme (optional)  (string/table)>)
+local Window = Library:Window(<Title (string)>, <Subtitle (string)>, <Theme (string/table)>)
 ```
 
 
@@ -60,7 +60,7 @@ Window:Notify("Question", "Do you like this UI Library?", {"Yes", "No"}, 5, func
 	if Text == "Yes" then
 		print("Thank you!")
 	else
-		print(":(")
+		print("Please tell me what I could improve!")
 	end
 end)
 ```
@@ -92,6 +92,10 @@ local Section = Tab:Section(<Section Name (string)>)
 ```Lua
 local Button = Section:Button(<Button Name (string)>, <Button Description (string)>, <Function (function)>)
 ```
+### Activating a Button
+```Lua
+Button:Activate()
+```
 
 
 ## Creating Labels
@@ -104,9 +108,13 @@ local Label = Section:Label(<Label Name (string)>)
 ```Lua
 local TextBox = Section:TextBox(<TextBox Name (string)>, <TextBox Description (string)>, <Default Text (string)>, <Function (function)>)
 ```
-### Getting the TextBox's current text
+### Getting a TextBox's current text
 ```Lua
 print(TextBox:GetText())
+```
+### Changing a TextBox's text
+```Lua
+TextBox:SetText(<Text (string)>)
 ```
 
 ## Creating Paragraphs
@@ -119,6 +127,10 @@ local Paragraph = Section:Paragraph(<Text 1 (string)>, <Text 2 (string)>)
 ```Lua
 local Interactable = Section:Interactable(<Interactable Name (string)>, <Interactable Description (string)>, <Button Text (string)>, <Function (function)>)
 ```
+### Activating an Interactable
+```Lua
+Interactable:Activate()
+```
 
 
 ## Creating Dropdowns
@@ -129,6 +141,10 @@ local Dropdown = Section:Dropdown(<Dropdown Name (string)>, <Dropdown List (tabl
 ```Lua
 local DropdownButton = Dropdown:Button(<Button Name (string)>)
 ```
+### Selecting an option in a Dropdown
+```Lua
+Dropdown:Select(<Option>)
+```
 
 ## Creating Switches
 ```Lua
@@ -137,6 +153,18 @@ local Switch = Section:Switch(<Switch Name (string)>, <Switch Description (strin
 ### Checking if a switch is toggled (returns true if it's turned on)
 ```Lua
 print(tostring(Switch:IsToggled()))
+```
+### Turning a switch on
+```Lua
+Switch:On()
+```
+### Turning a switch off
+```Lua
+Switch:Off()
+```
+### Toggling a switch
+```Lua
+Switch:Toggle()
 ```
 
 ## Creating Toggles
@@ -147,6 +175,18 @@ local Toggle = Section:Toggle(<Toggle Name (string)>, <Toggle Description (strin
 ```Lua
 print(tostring(Toggle:IsToggled()))
 ```
+### Turning a toggle on
+```Lua
+Toggle:On()
+```
+### Turning a toggle off
+```Lua
+Toggle:Off()
+```
+### Toggling a toggle
+```Lua
+Toggle:Toggle()
+```
 
 ## Creating Sliders
 ```Lua
@@ -156,10 +196,18 @@ local Slider = Section:Slider(<Slider Name (string)>, <Slider Description (strin
 ```Lua
 print(Slider:GetValue())
 ```
+### Changing a slider's value
+```Lua
+Slider:SetValue(<number>)
+```
 
 ## Creating ColorPickers
 ```Lua
 local ColorPicker = Section:ColorPicker(<ColorPicker Name (string)>, <ColorPicker Description (string)>, <Default Color (Color3)>, <Function (function)>)
+```
+### Changing a ColorPicker's Color
+```Lua
+ColorPicker:SetColor(<Color3>)
 ```
 
 
@@ -167,13 +215,20 @@ local ColorPicker = Section:ColorPicker(<ColorPicker Name (string)>, <ColorPicke
 ```Lua
 local PlayerList = Section:PlayerList(<PlayerList Name (string)>, <Function (function)>)
 ```
+### Selecting a player in a PlayerList
+```Lua
+PlayerList:Select(<Player>)
+```
 
 
 ## Creating Keybinds
 ```Lua
 local Keybind = Section:Keybind(<Keybind Name (string)>, <Keybind Description (string)>, <Default Keybind (string)>, <Function (function)>)
 ```
-
+### Changing the keybind
+```Lua
+Keybind:SetKeybind(<New Keybind (string)>)
+```
 
 ## Adding CommandBar
 ```Lua
@@ -206,12 +261,12 @@ local Command1 = CommandBar:AddCommand(<Names (table)>, <Arguments (table)>, <De
 local theme = Window:GetTheme()
 ```
 
-### Minimizing/Unminimizing a Window/CommandBar
+### Minimizing/Maximizing a Window/CommandBar
 ```Lua
 Window:Minimize()
-Window:Unminimize()
+Window:Maximize()
 CommandBar:Minimize()
-CommandBar:Unminimize()
+CommandBar:Maximize()
 ```
 
 
@@ -228,7 +283,7 @@ local Window = Library:Window("Title", "Subtitle", {
 ```
 #### or
 ```Lua
-Library:AddTheme("GreenTheme", {{
+Library:AddTheme("GreenTheme", {
 	TextColor = Color3.fromRGB(240, 240, 240),
 	WindowColor = Color3.fromRGB(48, 75, 45),
 	TabColor = Color3.fromRGB(56, 88, 53),
@@ -254,7 +309,7 @@ Window:ToggleUI()
 CommandBar:ToggleUI()
 ```
 
-## Editing UI Elements: (you can edit any UI element, except for notifications)
+## Editing UI Elements: (you can edit any UI element except for notifications)
 ```Lua
 <Element>:Edit(<New Arguments>)
 ```
@@ -300,7 +355,7 @@ end
 
 
 
-### Other Useless Functions: :OnClose(<Function>), :OnMinimize(<Function>), :OnThemeChanged(<Function>) and <Element>:GetElement()
+### Other Useless Functions: <Window>:OnClose(<Function>), <Window>:OnMinimize(<Function>), <Window>:OnThemeChanged(<Function>), <Element>:GetElement() and <Element>:ConvertToCommand(<CommandBar>)
 ```Lua
 Window:OnClose(function()
 	print('Window closed')
@@ -320,6 +375,11 @@ end)
 print(Window:GetElement().Name)
 ```
 
+```Lua
+Button:ConvertToCommand(CommandBar)
+```
+(Not available for Labels or Paragraphs)
+
 	
 	
 	
@@ -329,7 +389,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Emcep
 Library:EnableKeySystem('Title', 'Key System', 'Note here', {'1234'})
 local Window = Library:Window('Vernesity', 'Game Name', 'DarkTheme')
 local Tab = Window:Tab('Tab 1')
-local Tab2 = Window:Tab('Tab 2', 12856048393)
+local Tab2 = Window:Tab('Tab 2')
 local Section = Tab:Section('Main')
 local Button = Section:Button('Button', 'Desc', function()
 	print('Clicked')
@@ -368,9 +428,9 @@ end)
 
 Window:Notify('Question', 'Do you like this UI Library?', {'Yes', 'No'}, 5, function(Text)
 	if Text == 'Yes' then
-		print('Yay! :D')
+		print('Thank you!')
 	else
-		print('Not yay :(')
+		print('Please tell me what I could improve!')
 	end
 end)
 
